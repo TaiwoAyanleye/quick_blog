@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<% time = Time.now.wday %>
+<% day = "Sunday" if time == 0 %>
+<% day = "Monday" if time == 1 %>
+<% day = "Tuesday" if time == 2 %>
+<% day = "Wednesday" if time == 3 %>
+<% day = "Thursday" if time == 4 %>
+<% day = "Friday" if time == 5 %>
+<% day = "Saturday" if time == 6 %>
+<span>
+  You’re reading Stutern Voice, a publication about the students by Stutern since 2015. Happy <%= day %>.
+</span>
+
+<% @posts.each do |post| %>
+  <div class="post_wrapper">
+    <h2 class="title"><%= link_to post.title, post %></h2>
+    <p class="date"><%= post.created_at.strftime("%B %d, %Y") %></p>
+  </div>
+  <p>
+    <%= post.body.first(500) %>
+  </p>
+<% end %>
